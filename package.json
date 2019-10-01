@@ -1,0 +1,16 @@
+{
+  "name": "explore-threejs",
+  "version": "1.0.0",
+  "description": "Some of my first THREEJS experiments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "author": "Lea Rosema",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "dependencies": {}
+}
