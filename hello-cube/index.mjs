@@ -9,6 +9,9 @@ document.body.appendChild(renderer.domElement);
 
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
+  const canvas = renderer.domElement;
+  camera.aspect = canvas.clientWidth / canvas.clientHeight;
+  camera.updateProjectionMatrix();
 });
 
 function createMesh(geometry, color, position) {
@@ -21,18 +24,24 @@ function createMesh(geometry, color, position) {
 }
 
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry = new THREE.BoxGeometry(.2, .2, .2);
 const ambientLight = new THREE.AmbientLight(0x101010);
 const dirLight = new THREE.DirectionalLight(0xffffff, 1);
 dirLight.position.set(-1, 2, 4);
 
-const meshes = [
-  createMesh(geometry, 0x663399, {x: 0, y: 0, z: 0}),
-  createMesh(geometry, 0x336699, {x: 1, y: 1, z: 1}),
-  createMesh(geometry, 0x669933, {x: -1, y: 0, z: 2})
-];
+const fRand = (min, max) => min + (max - min) * Math.random();
+const rand = (min, max) => min + (((max - min + 1) * Math.random())|0);
 
-meshes.map(cube => scene.add(cube));
+
+const meshes = Array(150).fill(0).map(particle => {
+  return {
+    mesh: createMesh(geometry, rand(0, 0xffffff), {x: fRand(-2, 2), y: fRand(-2, 2), z: fRand(-2, 2)}),
+    motion: { x: fRand(-.01, .01), y: fRand(-.01, .01), z: fRand(-.01, .01)},
+    rotation: { x: fRand(-.01, .01), y: fRand(-.01, .01), z: fRand(-.01, .01)}
+  }
+});
+
+meshes.map(cube => scene.add(cube.mesh));
 
 scene.add(ambientLight);
 scene.add(dirLight);
@@ -41,15 +50,18 @@ camera.position.z = 5;
 
 
 
+function render(t) {
 
-
-function animate(t) {
-  requestAnimationFrame(animate);
   meshes.forEach((cube, i) => {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01 * i;
-    cube.position.z = Math.sin(t * 1e-3) + i;
+    cube.mesh.rotation.x += cube.rotation.x;
+    cube.mesh.rotation.y += cube.rotation.y;
+    cube.mesh.rotation.z += cube.rotation.z;
+    cube.mesh.position.x += Math.sin(t * 1e-3) * cube.motion.x;
+    cube.mesh.position.y += Math.sin(t * 1e-3) * cube.motion.y;
+    cube.mesh.position.z += Math.sin(t * 1e-3) * cube.motion.z;
   });
 	renderer.render(scene, camera);
+  requestAnimationFrame(render);
 }
-animate(0);
+
+render(0);
