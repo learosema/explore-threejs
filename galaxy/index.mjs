@@ -29,6 +29,8 @@ window.addEventListener('resize', setSize);
 const ambientLight = new THREE.AmbientLight(0x202020);
 scene.add(ambientLight);
 
+
+
 const sun = createSphere(10, {emissive: 0xffff00}, {x: 0, y: 0, z:0});
 scene.add(sun);
 
@@ -37,7 +39,7 @@ scene.add(earth);
 
 function animLoop(t = 0) {
   renderer.render(scene, camera);
-  // requestAnimationFrame(animLoop)
+  requestAnimationFrame(animLoop)
 }
 
 animLoop();
