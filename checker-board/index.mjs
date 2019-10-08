@@ -23,33 +23,37 @@ scene.add(ambientLight);
 scene.add(dirLight);
 
 const fieldSize = .5;
-const fieldGeometry = new THREE.BoxGeometry(fieldSize, .1, fieldSize); 
+const fieldGeometry = new THREE.BoxGeometry(fieldSize, .2, fieldSize); 
 
 const rows = 8;
 const cols = 8;
 const blackFieldColor = 0x222222;
 const whiteFieldColor = 0xaaaaaa;
 
+
+
 const board = Array(rows * cols).fill(0).map((_, i) => {
+  const { sin, cos, floor } = Math;
   const x = (i % cols);
-  const y = Math.floor(i / cols);
+  const y = floor(i / cols);
   const color = Boolean((y + x) % 2) ? blackFieldColor : whiteFieldColor;
   const material = new THREE.MeshPhongMaterial({ color });
   material.transparent = false;
   const mesh = new THREE.Mesh(fieldGeometry, material);
   mesh.receiveShadow = true;
-  mesh.position.set((-(cols/2) + x) * fieldSize, 0, ((-rows/2) + y) * fieldSize);
+  mesh.position.set((-(cols/2) + x) * fieldSize, sin(x)*cos(y) * .2  , ((-rows/2) + y) * fieldSize);
   return mesh;
 });
 
 const sphereGeometry = new THREE.SphereGeometry(fieldSize / 2, 16, 16);
 
 const spheres = Array(rows).fill(0).map((_, i) => {
+  const { sin, cos } = Math;
   const x = (i * 2) % cols;
   const y = i;
   const material = new THREE.MeshPhongMaterial({color: 0xaa00ff });
   const mesh = new THREE.Mesh(sphereGeometry, material);
-  mesh.position.set((-(cols/2) + x) * fieldSize, .02 + fieldSize / 2, ((-rows/2) + y) * fieldSize);
+  mesh.position.set((-(cols/2) + x) * fieldSize, sin(x)*cos(y) * .2 + .02 + fieldSize / 2, ((-rows/2) + y) * fieldSize);
   return mesh;
 });
 
