@@ -38,9 +38,7 @@ const board = Array(rows * cols).fill(0).map((_, i) => {
   const y = floor(i / cols);
   const color = Boolean((y + x) % 2) ? blackFieldColor : whiteFieldColor;
   const material = new THREE.MeshPhongMaterial({ color });
-  material.transparent = false;
   const mesh = new THREE.Mesh(fieldGeometry, material);
-  mesh.receiveShadow = true;
   mesh.position.set((-(cols/2) + x) * fieldSize, sin(x)*cos(y) * .2  , ((-rows/2) + y) * fieldSize);
   return mesh;
 });
