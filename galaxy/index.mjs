@@ -29,9 +29,11 @@ window.addEventListener('resize', setSize);
 const ambientLight = new THREE.AmbientLight(0x202020);
 scene.add(ambientLight);
 
+const dirLight = new THREE.DirectionalLight(0x343434);
+dirLight.position.set(1, -2, 40);
+scene.add(dirLight);
 
-
-const sun = createSphere(10, {emissive: 0xffff00}, {x: 0, y: 0, z:0});
+const sun = createSphere(10, {emissive: 0xffff00, color: 0xff0000}, {x: 0, y: 0, z:0});
 scene.add(sun);
 
 const earth = createSphere(2, { color: 0x1122cc }, {x: 20, y:0, z: 0 })
