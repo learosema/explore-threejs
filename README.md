@@ -8,6 +8,7 @@ and the [ThreeJS Fundamentals](https://threejsfundamentals.org) lessons.
 # Demos
 
 * [Hello Cube](hello-cube/) ([origin](https://threejsfundamentals.org/threejs/lessons/threejs-fundamentals.html))
+* [Hello Texture](hello-texture/)
 * [Checker Board](checker-board/)
 
 # Running this repo
