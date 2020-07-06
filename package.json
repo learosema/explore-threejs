@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "copy-libs": "./lib/copy-libs.sh",
     "start": "node server"
   },
   "author": "Lea Rosema",
@@ -12,5 +13,7 @@
   "devDependencies": {
     "express": "^4.17.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "three": "^0.118.3"
+  }
 }
