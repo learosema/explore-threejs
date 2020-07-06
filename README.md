@@ -10,6 +10,7 @@ and the [ThreeJS Fundamentals](https://threejsfundamentals.org) lessons.
 * [Hello Cube](hello-cube/) ([origin](https://threejsfundamentals.org/threejs/lessons/threejs-fundamentals.html))
 * [Hello Texture](hello-texture/)
 * [Checker Board](checker-board/)
+* [Galaxy](galaxy/) (course by Matt Deslauriers)
 
 # Running this repo
 
