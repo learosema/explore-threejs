@@ -1,4 +1,4 @@
-import { Camera, EventDispatcher, Vector3 } from '../../../src/Three';
+import { Camera, EventDispatcher, Vector3 } from '../three.module.js';
 
 export class TrackballControls extends EventDispatcher {
 

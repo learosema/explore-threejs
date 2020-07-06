@@ -2,7 +2,7 @@ import {
 	Camera,
 	EventDispatcher,
 	Vector3
-} from '../../../src/Three';
+} from '../three.module.js';
 
 export class PointerLockControls extends EventDispatcher {
 

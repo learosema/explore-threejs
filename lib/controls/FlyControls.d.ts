@@ -1,6 +1,6 @@
 import {
 	Camera
-} from '../../../src/Three';
+} from '../three.module.js';
 
 export class FlyControls {
 

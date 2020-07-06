@@ -2,7 +2,7 @@ import {
 	Camera,
 	EventDispatcher,
 	Object3D
-} from '../../../src/Three';
+} from '../three.module.js';
 
 export class DragControls extends EventDispatcher {
 

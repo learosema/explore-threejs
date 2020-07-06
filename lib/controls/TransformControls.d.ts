@@ -2,7 +2,7 @@ import {
 	Object3D,
 	Camera,
 	MOUSE
-} from '../../../src/Three';
+} from '../three.module.js';
 
 export class TransformControls extends Object3D {
 

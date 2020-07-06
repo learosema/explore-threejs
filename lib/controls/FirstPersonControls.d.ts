@@ -1,7 +1,7 @@
 import {
 	Camera,
 	Vector3
-} from '../../../src/Three';
+} from '../three.module.js';
 
 export class FirstPersonControls {
 
