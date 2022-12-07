@@ -11,7 +11,7 @@
   "author": "Lea Rosema",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "dependencies": {
     "three": "^0.118.3"
